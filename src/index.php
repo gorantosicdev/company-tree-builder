@@ -305,8 +305,8 @@ class TestScript {
   public function execute(): void {
     $start = microtime(true);
 
-    echo json_encode(array_map(function ($item) {
-      return $item->toJSON();
+    echo json_encode(array_map(function ($tree) {
+      return $tree->toJSON();
     }, $this->_buildTrees()));
 
     echo 'Total time: ' . (microtime(true) - $start);
