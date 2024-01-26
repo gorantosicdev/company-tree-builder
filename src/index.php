@@ -15,7 +15,7 @@ class Travel {
     string $employeeName,
     string $departure,
     string $destination,
-    string $price,
+    float $price,
     string $companyId,
     ?string $createdAt
   ) {
@@ -200,8 +200,8 @@ class Company {
       'id'        => $this->getId(),
       'createdAt' => $this->getCreatedAt(),
       'name'      => $this->getName(),
-      'cost'      => $this->getTotalCost(),
       'parentId'  => $this->getParentId(),
+      'cost'      => $this->getTotalCost(),
       'children'  => array_map(function ($child) {
         return $child->toJSON();
       }, $this->getChildren()),
@@ -282,7 +282,7 @@ class TestScript {
         $company->setTravels($travels[$company->getId()]);
       }
 
-      $companies[$companyData['id']] = $company;
+      $companies[$company->getId()] = $company;
     }
 
     return $companies;
